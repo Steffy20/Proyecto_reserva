@@ -3,6 +3,9 @@ import './MisReservas.css';
 
 function MisReservas({ usuario }) {
   const [misReservas, setMisReservas] = useState([]);
+  const [editandoIndex, setEditandoIndex] = useState(null);
+  const [nuevaFecha, setNuevaFecha] = useState('');
+  const [nuevaHora, setNuevaHora] = useState('');
 
   useEffect(() => {
     const cargarReservas = () => {
@@ -43,6 +46,41 @@ function MisReservas({ usuario }) {
     setMisReservas(nuevasReservas);
   };
 
+   const iniciarEdicion = (index) => {
+    setEditandoIndex(index);
+    setNuevaFecha(misReservas[index].fecha);
+    setNuevaHora(misReservas[index].hora);
+  };
+
+  const guardarCambio = (index) => {
+    const reservasGuardadas = JSON.parse(localStorage.getItem('reservas')) || [];
+
+    const nuevaLista = reservasGuardadas.map((reserva) => {
+      if (
+        reserva.usuario === usuario.nombre &&
+        reserva.restaurante === misReservas[index].restaurante &&
+        reserva.fecha === misReservas[index].fecha &&
+        reserva.hora === misReservas[index].hora &&
+        reserva.personas === misReservas[index].personas
+      ) {
+        return {
+          ...reserva,
+          fecha: nuevaFecha,
+          hora: nuevaHora,
+        };
+      }
+      return reserva;
+    });
+
+    localStorage.setItem('reservas', JSON.stringify(nuevaLista));
+
+    const nuevasReservas = nuevaLista.filter(
+      (reserva) => reserva.usuario === usuario.nombre
+    );
+    setMisReservas(nuevasReservas);
+    setEditandoIndex(null);
+  };
+
   //Validación de inicio de sesión
   if (!usuario) {
     return <p>Debes iniciar sesión para ver tus reservas.</p>;
@@ -58,14 +96,40 @@ function MisReservas({ usuario }) {
           {misReservas.map((reserva, index) => (
             <li key={index} className="reserva-item">
               <strong>Restaurante:</strong> {reserva.restaurante} <br />
-              <strong>Fecha:</strong> {reserva.fecha} <br />
-              <strong>Hora:</strong> {reserva.hora} <br />
+                <strong>Fecha:</strong>{' '}
+              {editandoIndex === index ? (
+                <input
+                  type="date"
+                  value={nuevaFecha}
+                  onChange={(e) => setNuevaFecha(e.target.value)}
+                />
+              ) : (
+                reserva.fecha
+              )}{' '}
+              <br />
+              <strong>Hora:</strong>{' '}
+              {editandoIndex === index ? (
+                <input
+                  type="time"
+                  value={nuevaHora}
+                  onChange={(e) => setNuevaHora(e.target.value)}
+                />
+              ) : (
+                reserva.hora
+              )}
+              <br />
               <strong>Personas:</strong> {reserva.personas} <br />
-              <strong>Nombre del reservante:</strong> {reserva.usuario} <br /> {}
-              <button
-                className="btn-eliminar"
-                onClick={() => eliminarReserva(index)}
-              >
+              <strong>Nombre del reservante:</strong> {reserva.usuario} <br />
+              {editandoIndex === index ? (
+                <button className="btn-guardar" onClick={() => guardarCambio(index)}>
+                  Guardar cambio
+                </button>
+              ) : (
+                <button className="btn-editar" onClick={() => iniciarEdicion(index)}>
+                  Cambiar fecha
+                </button>
+              )}
+              <button className="btn-eliminar" onClick={() => eliminarReserva(index)}>
                 Eliminar
               </button>
             </li>
