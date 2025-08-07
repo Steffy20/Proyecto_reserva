@@ -1,0 +1,78 @@
+
+.reserva-form-container {
+  max-width: 400px;
+  margin: 0 auto;
+  background-color: white;
+  padding: 40px 30px;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+  text-align: center;
+}
+
+.reserva-form-container h2 {
+  margin-bottom: 30px;
+  font-weight: 700;
+}
+
+.reserva-form-container label {
+  display: block;
+  text-align: left;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.reserva-form-container input {
+  width: 100%;
+  padding: 12px 15px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+.error {
+  color: red;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.botones-reserva {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+.btn-confirmar {
+  flex: 1;
+  padding: 12px;
+  background-color: #5151e5;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-confirmar:hover {
+  background-color: #3a3ad1;
+}
+
+.btn-cancelar {
+  flex: 1;
+  padding: 12px;
+  background-color: #f44336;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-cancelar:hover {
+  background-color: #d32f2f;
+}

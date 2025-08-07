@@ -1,0 +1,54 @@
+.navbar {
+  background-color: #5290e0;
+  padding: 0rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.navbar-logo a {
+  text-decoration: none;
+  font-size: 1.8rem;
+  color: #ffc107;
+  font-weight: bold;
+}
+
+.navbar-links {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.navbar-links li {
+  position: relative;
+}
+
+.navbar-links a,
+.navbar-links button {
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.navbar-links a:hover,
+.navbar-links button:hover {
+  color: #ffc107;
+}
+
+.cerrar-sesion-btn {
+  padding: 0.3rem 0.8rem;
+  border-radius: 5px;
+  background-color: #a00;
+  transition: background-color 0.3s ease;
+}
+
+.cerrar-sesion-btn:hover {
+  background-color: #d00;
+}

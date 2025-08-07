@@ -1,0 +1,69 @@
+/* Contenedor general de la lista */
+.restaurante-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: center;
+  padding: 20px;
+}
+
+/* Tarjeta individual de restaurante */
+.restaurante-card {
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* Efecto hover */
+.restaurante-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Imagen del restaurante */
+.restaurante-img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+}
+
+/* Nombre del restaurante */
+.restaurante-card h3 {
+  font-size: 1.2rem;
+  margin: 16px 12px 8px;
+  color: #333;
+}
+
+/* Descripción */
+.restaurante-card p {
+  font-size: 0.95rem;
+  color: #555;
+  margin: 0 12px 16px;
+}
+
+/* Botón */
+.restaurante-card button {
+  background-color: #5151e5;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 10px 20px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.restaurante-card button:hover {
+  background-color: #3a3ad1;
+}
+
